@@ -16,12 +16,21 @@ import javax.persistence.*
 @Table(name = "equipment")
 @Where(clause = "entity_status <> 'DELETED'")
 @EntityListeners(AuditListener::class)
-class EquipmentEntity : AuditableEntity() {
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id", unique = true, nullable = false)
-    override var id: UUID? = null
+data class EquipmentEntity(
+
+        @Id
+        @GeneratedValue(generator = "UUID")
+        @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+        @Column(name = "id", unique = true, nullable = false)
+        override var id: UUID? = null,
+
+        @Column(name = "name", nullable = false)
+        var name: String,
+
+        @Column(name = "shortName", nullable = false)
+        var shortName: String
+
+) : AuditableEntity() {
 
     companion object {
         /**

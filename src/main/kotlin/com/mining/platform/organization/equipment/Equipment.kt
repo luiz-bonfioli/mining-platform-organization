@@ -4,21 +4,22 @@ import com.mining.platform.core.controller.ValueObject
 import java.util.*
 
 /**
- * The Equipment Value Object
+ * The equipment value object
  *
  * @author luiz.bonfioli
  */
-class Equipment : ValueObject<EquipmentEntity> {
-    var id: UUID? = null
+data class Equipment(
+        var id: UUID? = null,
+        var name: String = "",
+        var shortName: String = ""
+) : ValueObject<EquipmentEntity> {
 
     override var entity: EquipmentEntity
-        get() {
-            val entity = EquipmentEntity()
-            entity.id = id
-            return entity
-        }
+        get() = EquipmentEntity(id, name, shortName)
         set(entity) {
             id = entity.id
+            name = entity.name
+            shortName = entity.shortName
         }
 
     companion object {

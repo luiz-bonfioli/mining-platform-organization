@@ -1,6 +1,5 @@
 package com.mining.platform.organization
 
-import com.mining.platform.core.datasource.multitenant.SchemaConnectionProvider
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.boot.runApplication
@@ -14,7 +13,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 class MiningPlatformOrganizationApplication
 
 fun main(args: Array<String>) {
-    var a: SchemaConnectionProvider = SchemaConnectionProvider()
-    a.toString()
     runApplication<MiningPlatformOrganizationApplication>(*args)
 }
