@@ -10,4 +10,8 @@ import java.util.*
  * @author luiz.bonfioli
  */
 @Repository
-interface EquipmentRepository : AbstractRepository<EquipmentEntity, UUID>
+interface EquipmentRepository : AbstractRepository<EquipmentEntity, UUID> {
+
+    fun findByCategoryId(categoryId: UUID): Collection<EquipmentEntity>
+
+}
