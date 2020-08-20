@@ -3,6 +3,7 @@ package com.mining.platform.organization.equipment
 import com.mining.platform.core.audit.AuditListener
 import com.mining.platform.core.audit.AuditableEntity
 import com.mining.platform.organization.equipment.category.CategoryEntity
+import com.mining.platform.organization.equipment.model.ModelEntity
 import org.hibernate.annotations.GenericGenerator
 import org.hibernate.annotations.Where
 import java.util.*
@@ -33,6 +34,10 @@ data class EquipmentEntity(
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "category_id", nullable = false, foreignKey = ForeignKey(name = "category_fk"))
-        var category: CategoryEntity?
+        var category: CategoryEntity?,
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "model_id", nullable = false, foreignKey = ForeignKey(name = "model_fk"))
+        var model: ModelEntity?
 
 ) : AuditableEntity()

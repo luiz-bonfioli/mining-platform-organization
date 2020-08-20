@@ -1,8 +1,6 @@
 package com.mining.platform.organization.organization
 
-import com.mining.platform.core.controller.EntityConverter.convert
 import com.mining.platform.core.controller.ValueObject
-import com.mining.platform.core.controller.ValueObjectConverter.convert
 import com.mining.platform.organization.site.Site
 import java.util.*
 

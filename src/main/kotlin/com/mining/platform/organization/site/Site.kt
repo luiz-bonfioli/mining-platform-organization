@@ -1,7 +1,7 @@
 package com.mining.platform.organization.site
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.mining.platform.core.controller.EntityConverter.convert
+import com.mining.platform.core.converter.EntityConverter.convert
 import com.mining.platform.core.controller.ValueObject
 import com.mining.platform.organization.organization.Organization
 import java.util.*
