@@ -1,7 +1,7 @@
 package com.mining.platform.organization.equipment
 
-import com.mining.platform.core.converter.EntityConverter
 import com.mining.platform.core.controller.ValueObject
+import com.mining.platform.core.converter.EntityConverter
 import com.mining.platform.core.converter.ValueObjectConverter
 import com.mining.platform.organization.equipment.category.Category
 import com.mining.platform.organization.equipment.model.Model
@@ -22,13 +22,13 @@ data class Equipment(
 
     override var entity: EquipmentEntity
         get() = EquipmentEntity(id, name, shortName,
-                EntityConverter.convert(category),
-                EntityConverter.convert(model))
+                category?.let { EntityConverter.convert(it) },
+                model?.let { EntityConverter.convert(it) })
         set(entity) {
             id = entity.id
             name = entity.name
             shortName = entity.shortName
-            category = ValueObjectConverter.convert(entity.category, Category::class)
-            model = ValueObjectConverter.convert(entity.model, Model::class)
+            category = entity.category?.let { ValueObjectConverter.convert(it, Category::class) }
+            model = entity.model?.let { ValueObjectConverter.convert(it, Model::class) }
         }
 }

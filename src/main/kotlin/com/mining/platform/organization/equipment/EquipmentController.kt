@@ -21,10 +21,10 @@ import kotlin.reflect.KClass
 class EquipmentController : AbstractController<EquipmentEntity, Equipment, EquipmentService>() {
 
     @GetMapping("/find-by-category-id/{categoryId}")
-    fun findByCategoryId(@PathVariable categoryId: UUID): ResponseEntity<Collection<Equipment>> {
-        val equipments = service.findByCategoryId(categoryId)
-        return ServerResponse.success(ValueObjectConverter.convert(equipments, Equipment::class))
-    }
+    fun findByCategoryId(@PathVariable categoryId: UUID): ResponseEntity<Collection<Equipment>> =
+            service.findByCategoryId(categoryId).let {
+                ServerResponse.success(ValueObjectConverter.convert(it, Equipment::class))
+            }
 
     override val valueObjectClass: KClass<Equipment>
         get() = Equipment::class

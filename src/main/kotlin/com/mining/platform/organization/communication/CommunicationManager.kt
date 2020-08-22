@@ -75,8 +75,8 @@ class CommunicationManager {
      * @param companyToken
      * @return
      */
-    fun buildCompanyInboundTopics(companyToken: UUID): List<TopicEntity> {
-        val topics: MutableList<TopicEntity> = ArrayList<TopicEntity>()
+    fun buildCompanyInboundTopics(companyToken: UUID): Collection<TopicEntity> {
+        val topics: MutableList<TopicEntity> = ArrayList()
 
         return topics
     }
@@ -85,8 +85,8 @@ class CommunicationManager {
      *
      * @param entity
      */
-    fun buildCompanyOutboundTopics(companyToken: UUID): List<TopicEntity> {
-        val topics: MutableList<TopicEntity> = ArrayList<TopicEntity>()
+    fun buildCompanyOutboundTopics(companyToken: UUID): Collection<TopicEntity> {
+        val topics: MutableList<TopicEntity> = ArrayList()
 
         return topics
     }

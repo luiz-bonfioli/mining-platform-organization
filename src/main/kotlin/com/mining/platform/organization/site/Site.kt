@@ -25,7 +25,7 @@ class Site : ValueObject<SiteEntity> {
             entity.id = id
             entity.name = name
             entity.description = description
-            entity.organization = convert(organization)
+            entity.organization = organization?.let { convert(it) }
             return entity
         }
         set(entity) {
