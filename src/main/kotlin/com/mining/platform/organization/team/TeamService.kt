@@ -5,7 +5,7 @@ import com.mining.platform.core.service.DataService
 import org.springframework.stereotype.Service
 
 /**
- * The Team Service
+ * The Team service
  *
  * @author luiz.bonfioli
  */

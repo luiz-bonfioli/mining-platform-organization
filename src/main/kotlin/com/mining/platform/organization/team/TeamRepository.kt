@@ -1,11 +1,13 @@
 package com.mining.platform.organization.team
 
 import com.mining.platform.core.datasource.AbstractRepository
+import org.springframework.stereotype.Repository
 import java.util.*
 
 /**
- * The Team Repository
+ * The Team repository
  *
  * @author luiz.bonfioli
  */
+@Repository
 interface TeamRepository : AbstractRepository<TeamEntity, UUID>

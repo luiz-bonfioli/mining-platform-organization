@@ -5,7 +5,7 @@ import com.mining.platform.core.service.DataService
 import org.springframework.stereotype.Service
 
 /**
- * The Location Service
+ * The Location service
  *
  * @author luiz.bonfioli
  */

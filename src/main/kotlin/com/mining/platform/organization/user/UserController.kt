@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.RestController
 import kotlin.reflect.KClass
 
 /**
- * The User Controller
+ * The User controller
  *
  * @author luiz.bonfioli
  */
 @RestController
-@RequestMapping("/api/user") //@Api(value = "user", tags = {"User"})
+@RequestMapping("/api/user")
 class UserController : AbstractController<UserEntity, User, UserService>() {
+
     override val valueObjectClass: KClass<User>
         get() = User::class
+
 }

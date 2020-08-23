@@ -8,7 +8,7 @@ import java.util.*
 import javax.persistence.*
 
 /**
- * The Team Entity
+ * The Team entity
  *
  * @author luiz.bonfioli
  */
@@ -16,17 +16,15 @@ import javax.persistence.*
 @Table(name = "team")
 @Where(clause = "entity_status <> 'DELETED'")
 @EntityListeners(AuditListener::class)
-class TeamEntity : AuditableEntity() {
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id", unique = true, nullable = false)
-    override var id: UUID? = null
+data class TeamEntity(
 
-    companion object {
-        /**
-         * Generated Serial
-         */
-        private const val serialVersionUID = 1303757091952934829L
-    }
-}
+        @Id
+        @GeneratedValue(generator = "UUID")
+        @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+        @Column(name = "id", unique = true, nullable = false)
+        override var id: UUID? = null,
+
+        @Column(name = "name", nullable = false)
+        var name: String
+
+) : AuditableEntity()

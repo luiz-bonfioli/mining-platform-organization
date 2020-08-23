@@ -4,27 +4,19 @@ import com.mining.platform.core.controller.ValueObject
 import java.util.*
 
 /**
- * The Unit Value Object
+ * The Unit value object
  *
  * @author luiz.bonfioli
  */
-class Unit : ValueObject<UnitEntity> {
-    var id: UUID? = null
+data class Unit(
+        var id: UUID? = null,
+        var name: String = ""
+) : ValueObject<UnitEntity> {
 
     override var entity: UnitEntity
-        get() {
-            val entity = UnitEntity()
-            entity.id = id
-            return entity
-        }
+        get() = UnitEntity(id, name)
         set(entity) {
             id = entity.id
+            name = entity.name
         }
-
-    companion object {
-        /**
-         * Generated Serial
-         */
-        private const val serialVersionUID = 7474067640985024047L
-    }
 }

@@ -5,7 +5,7 @@ import com.mining.platform.core.service.DataService
 import org.springframework.stereotype.Service
 
 /**
- * The User Service
+ * The User service
  *
  * @author luiz.bonfioli
  */

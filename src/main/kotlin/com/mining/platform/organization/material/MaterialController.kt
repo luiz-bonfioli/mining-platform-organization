@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.RestController
 import kotlin.reflect.KClass
 
 /**
- * The Material Controller
+ * The Material controller
  *
  * @author luiz.bonfioli
  */
 @RestController
 @RequestMapping("/api/material")
 class MaterialController : AbstractController<MaterialEntity, Material, MaterialService>() {
+
     override val valueObjectClass: KClass<Material>
         get() = Material::class
+
 }

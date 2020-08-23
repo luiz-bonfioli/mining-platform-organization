@@ -4,27 +4,19 @@ import com.mining.platform.core.controller.ValueObject
 import java.util.*
 
 /**
- * The Location Value Object
+ * The Location value object
  *
  * @author luiz.bonfioli
  */
-class Location : ValueObject<LocationEntity> {
-    var id: UUID? = null
+data class Location(
+        var id: UUID? = null,
+        var name: String = ""
+) : ValueObject<LocationEntity> {
 
     override var entity: LocationEntity
-        get() {
-            val entity = LocationEntity()
-           // entity.id = id
-            return entity
-        }
+        get() = LocationEntity(id, name)
         set(entity) {
-          //  id = entity.id
+            id = entity.id
+            name = entity.name
         }
-
-    companion object {
-        /**
-         * Generated Serial
-         */
-        private const val serialVersionUID = 8957392732365526930L
-    }
 }

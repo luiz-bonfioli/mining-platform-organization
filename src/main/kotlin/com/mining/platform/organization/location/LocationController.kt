@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.RestController
 import kotlin.reflect.KClass
 
 /**
- * The Location Controller
+ * The Location controller
  *
  * @author luiz.bonfioli
  */
 @RestController
 @RequestMapping("/api/location")
 class LocationController : AbstractController<LocationEntity, Location, LocationService>() {
+
     override val valueObjectClass: KClass<Location>
         get() = Location::class
+
 }

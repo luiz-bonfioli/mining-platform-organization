@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.RestController
 import kotlin.reflect.KClass
 
 /**
- * The Team Controller
+ * The Team controller
  *
  * @author luiz.bonfioli
  */
 @RestController
-@RequestMapping("/api/team") //@Api(value = "team", tags = {"Team"})
+@RequestMapping("/api/team")
 class TeamController : AbstractController<TeamEntity, Team, TeamService>() {
+
     override val valueObjectClass: KClass<Team>
         get() = Team::class
+
 }

@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.RestController
 import kotlin.reflect.KClass
 
 /**
- * The Organization Controller
+ * The Organization controller
  *
  * @author luiz.bonfioli
  */
 @RestController
 @RequestMapping("/api/organization")
 class OrganizationController : AbstractController<OrganizationEntity, Organization, OrganizationService>() {
+
     override val valueObjectClass: KClass<Organization>
         get() = Organization::class
+
 }

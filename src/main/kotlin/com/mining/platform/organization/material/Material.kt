@@ -4,27 +4,19 @@ import com.mining.platform.core.controller.ValueObject
 import java.util.*
 
 /**
- * The Material Value Object
+ * The Material value object
  *
  * @author luiz.bonfioli
  */
-class Material : ValueObject<MaterialEntity> {
-    var id: UUID? = null
+data class Material(
+        var id: UUID? = null,
+        var name: String = ""
+) : ValueObject<MaterialEntity> {
 
     override var entity: MaterialEntity
-        get() {
-            val entity = MaterialEntity()
-            //entity.id = id
-            return entity
-        }
+        get() = MaterialEntity(id, name)
         set(entity) {
-           // id = entity.id
+            id = entity.id
+            name = entity.name
         }
-
-    companion object {
-        /**
-         * Generated Serial
-         */
-        private const val serialVersionUID = -3885405317270898384L
-    }
 }
