@@ -1,4 +1,4 @@
-package com.mining.platform.organization.organization
+package com.mining.platform.organization.operator
 
 import com.mining.platform.core.audit.AuditListener
 import com.mining.platform.core.audit.AuditableEntity
@@ -8,15 +8,15 @@ import java.util.*
 import javax.persistence.*
 
 /**
- * The Organization entity
+ * The Operator entity
  *
  * @author luiz.bonfioli
  */
 @Entity
-@Table(name = "organization")
+@Table(name = "operator")
 @Where(clause = "entity_status <> 'DELETED'")
 @EntityListeners(AuditListener::class)
-data class OrganizationEntity(
+data class OperatorEntity(
 
         @Id
         @GeneratedValue(generator = "UUID")
@@ -25,9 +25,6 @@ data class OrganizationEntity(
         override var id: UUID? = null,
 
         @Column(name = "name", nullable = false)
-        var name: String,
-
-        @Column(name = "description", nullable = false)
-        var description: String
+        var name: String
 
 ) : AuditableEntity()

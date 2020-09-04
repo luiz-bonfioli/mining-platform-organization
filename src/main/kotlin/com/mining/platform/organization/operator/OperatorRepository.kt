@@ -1,4 +1,4 @@
-package com.mining.platform.organization.organization
+package com.mining.platform.organization.operator
 
 import com.mining.platform.core.datasource.AbstractRepository
 import org.springframework.data.domain.Page
@@ -7,13 +7,13 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 /**
- * The Organization repository
+ * The Operator repository
  *
  * @author luiz.bonfioli
  */
 @Repository
-interface OrganizationRepository : AbstractRepository<OrganizationEntity, UUID> {
+interface OperatorRepository : AbstractRepository<OperatorEntity, UUID> {
 
-    fun findByNameContains(name: String, pageable: Pageable): Page<OrganizationEntity>
+    fun findByNameContains(name: String, pageable: Pageable): Page<OperatorEntity>
 
 }
