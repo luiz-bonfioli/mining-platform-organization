@@ -14,7 +14,7 @@ import java.util.*
 data class Checklist(
         var id: UUID? = null,
         var name: String = "",
-        var checklistItems: Collection<ChecklistItem>?
+        var checklistItems: Collection<ChecklistItem>? = null
 ) : ValueObject<ChecklistEntity> {
 
     override var entity: ChecklistEntity
