@@ -2,8 +2,8 @@ package com.mining.platform.organization.communication
 
 import com.mining.platform.core.Application
 import com.mining.platform.core.communication.CommunicationService
-import com.mining.platform.core.communication.topic.TopicEntity
-import com.mining.platform.core.communication.topic.TopicService
+import com.mining.platform.core.communication.protocol.Protocol
+import com.mining.platform.core.communication.topic.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.config.ConfigurableBeanFactory
 import org.springframework.context.annotation.Scope
@@ -61,13 +61,20 @@ class CommunicationManager {
      *
      */
     private fun buildServiceInboundTopics() {
-
+        topicService.create(
+                TopicUtils.formatTopicByApplication(Protocol.Topic.COMPANY, application.name),
+                Protocol.Fanout.COMPANY_EVENT, TopicType.SERVICE_INBOUND,
+                ExchangeType.SERVICE_FANOUT_EXCHANGE)
     }
 
     /**
      *
      */
     private fun buildServiceOutboundTopics() {
+        topicService.create(
+                TopicUtils.formatTopicByApplication(Protocol.Topic.COMPANY, application.name),
+                Protocol.Fanout.COMPANY_EVENT, TopicType.SERVICE_OUTBOUND,
+                ExchangeType.SERVICE_FANOUT_EXCHANGE)
     }
 
     /**
