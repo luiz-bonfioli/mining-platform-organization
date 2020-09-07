@@ -1,6 +1,5 @@
 package com.mining.platform.organization.company
 
-import com.google.protobuf.ByteString
 import com.mining.platform.company.CompanyCreatedPackageOuterClass.CompanyCreatedPackage
 import com.mining.platform.core.communication.CommunicationService
 import com.mining.platform.core.communication.MessageListener
@@ -38,13 +37,13 @@ class CompanyService : AbstractService<CompanyEntity, CompanyRepository>(), Data
 
     override fun onMessageArrived(eventId: Byte, payload: ByteArray, source: String) {
         val companyCreated = CompanyCreatedPackage.parseFrom(payload)
-        val companyId = UUIDConverter.toUUID(companyCreated.companyId.toByteArray())
+        val companyId = UUIDConverter.toUUID(companyCreated.companyId)
         databaseManager.buildDatabase(companyId)
     }
 
     private fun notifyCompanyCreated(entity: CompanyEntity) {
         val builder = CompanyCreatedPackage.newBuilder().apply {
-            companyId = ByteString.copyFrom(entity.id?.let { UUIDConverter.toBytes(it) })
+            companyId = entity.id?.toString()
         }.build()
 
         communicationService.publish(Protocol.Fanout.COMPANY_EVENT,

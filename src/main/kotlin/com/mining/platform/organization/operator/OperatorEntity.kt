@@ -25,6 +25,9 @@ data class OperatorEntity(
         override var id: UUID? = null,
 
         @Column(name = "name", nullable = false)
-        var name: String
+        var name: String,
+
+        @Column(name = "register", nullable = false)
+        var register: Int
 
 ) : AuditableEntity()

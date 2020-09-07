@@ -11,13 +11,15 @@ import java.util.*
  */
 data class Operator(
         var id: UUID? = null,
-        var name: String = ""
+        var name: String = "",
+        var register: Int = 0
 ) : ValueObject<OperatorEntity> {
 
     override var entity: OperatorEntity
-        get() = OperatorEntity(id, name)
+        get() = OperatorEntity(id, name, register)
         set(entity) {
             id = entity.id
             name = entity.name
+            register = entity.register
         }
 }

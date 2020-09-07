@@ -68,8 +68,8 @@ class EquipmentService : AbstractService<EquipmentEntity, EquipmentRepository>()
 
     private fun publishEquipmentList(builder: EquipmentListPackage.Builder) {
         communicationService.publish(Protocol.Topic.BASIC_DATA_SYNC + Protocol.Topic.RESPONSE,
-                Protocol.Service.COMPANY,
-                Protocol.Event.COMPANY_CREATED,
+                Protocol.Service.EQUIPMENT,
+                Protocol.Event.EQUIPMENT_LIST,
                 builder.build().toByteArray()
         )
     }
