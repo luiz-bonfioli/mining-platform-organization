@@ -60,7 +60,7 @@ class CommunicationManager {
                 ExchangeType.SERVICE_FANOUT_EXCHANGE)
 
         topicService.create(
-                Protocol.Topic.DIGNOSTIC + Protocol.Topic.REQUEST,
+                Protocol.Topic.DIAGNOSTIC + Protocol.Topic.REQUEST,
                 Protocol.Topic.MQTT_DEFAULT,
                 TopicType.MQTT_INBOUND,
                 ExchangeType.TOPIC_EXCHANGE)
@@ -74,7 +74,7 @@ class CommunicationManager {
                 ExchangeType.SERVICE_FANOUT_EXCHANGE)
 
         topicService.create(
-                Protocol.Topic.DIGNOSTIC + Protocol.Topic.RESPONSE,
+                Protocol.Topic.DIAGNOSTIC + Protocol.Topic.RESPONSE,
                 Protocol.Topic.MQTT_DEFAULT,
                 TopicType.MQTT_OUTBOUND,
                 ExchangeType.TOPIC_EXCHANGE)
