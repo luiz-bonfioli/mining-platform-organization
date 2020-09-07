@@ -2,6 +2,7 @@ package com.mining.platform.organization.equipment
 
 import com.mining.platform.core.audit.AuditListener
 import com.mining.platform.core.audit.AuditableEntity
+import com.mining.platform.organization.device.DeviceEntity
 import com.mining.platform.organization.equipment.category.CategoryEntity
 import com.mining.platform.organization.equipment.model.ModelEntity
 import org.hibernate.annotations.GenericGenerator
@@ -38,6 +39,10 @@ data class EquipmentEntity(
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "model_id", nullable = false, foreignKey = ForeignKey(name = "model_fk"))
-        var model: ModelEntity?
+        var model: ModelEntity?,
+
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "device_id", nullable = false, foreignKey = ForeignKey(name = "device_fk"))
+        var device: DeviceEntity?
 
 ) : AuditableEntity()

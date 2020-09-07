@@ -13,8 +13,8 @@ import java.util.*
  */
 data class ChecklistItem(
         var id: UUID? = null,
-        var name: String,
-        var checklist: Checklist
+        var name: String = "",
+        var checklist: Checklist = Checklist()
 ) : ValueObject<ChecklistItemEntity> {
 
     override var entity: ChecklistItemEntity
@@ -22,6 +22,6 @@ data class ChecklistItem(
         set(entity) {
             id = entity.id
             name = entity.name
-            checklist = ValueObjectConverter.convert(entity.checklist, Checklist::class)
+          //  checklist = ValueObjectConverter.convert(entity.checklist, Checklist::class)
         }
 }

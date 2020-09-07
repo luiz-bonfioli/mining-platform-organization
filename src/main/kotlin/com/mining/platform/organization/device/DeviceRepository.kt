@@ -1,6 +1,8 @@
 package com.mining.platform.organization.device
 
 import com.mining.platform.core.datasource.AbstractRepository
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Repository
 import java.util.*
 
@@ -10,4 +12,6 @@ import java.util.*
  * @author luiz.bonfioli
  */
 @Repository
-interface DeviceRepository : AbstractRepository<DeviceEntity, UUID>
+interface DeviceRepository : AbstractRepository<DeviceEntity, UUID> {
+
+}

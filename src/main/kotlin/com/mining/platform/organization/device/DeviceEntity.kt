@@ -24,7 +24,7 @@ data class DeviceEntity(
         @Column(name = "id", unique = true, nullable = false)
         override var id: UUID? = null,
 
-        @Column(name = "serial_number", nullable = false)
+        @Column(name = "serial_number")
         var serialNumber: String? = null
 
 ) : AuditableEntity()
