@@ -21,7 +21,7 @@ class EquipmentService : AbstractService<EquipmentEntity, EquipmentRepository>()
     override fun findByParams(pageable: Pageable, search: Map<String, String>): Page<EquipmentEntity> =
             repository.findByNameContains(search.getOrDefault("name", ""), pageable)
 
-    override fun onMessageArrived(eventId: Byte, payload: ByteArray?, source: String) {
+    override fun onMessageArrived(eventId: Byte, payload: ByteArray, source: String) {
         TODO("Not yet implemented")
     }
 }

@@ -6,6 +6,7 @@ import com.mining.platform.core.communication.CommunicationService
 import com.mining.platform.core.communication.MessageListener
 import com.mining.platform.core.communication.protocol.Protocol
 import com.mining.platform.core.converter.UUIDConverter
+import com.mining.platform.core.infrastructure.DatabaseManager
 import com.mining.platform.core.service.AbstractService
 import com.mining.platform.core.service.DataService
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,6 +25,9 @@ class CompanyService : AbstractService<CompanyEntity, CompanyRepository>(), Data
     @Autowired
     private lateinit var communicationService: CommunicationService
 
+    @Autowired
+    private lateinit var databaseManager: DatabaseManager
+
     override fun findByParams(pageable: Pageable, search: Map<String, String>): Page<CompanyEntity> =
             repository.findByNameContains(search.getOrDefault("name", ""), pageable)
 
@@ -32,8 +36,10 @@ class CompanyService : AbstractService<CompanyEntity, CompanyRepository>(), Data
         notifyCompanyCreated(entity)
     }
 
-    override fun onMessageArrived(eventId: Byte, payload: ByteArray?, source: String) {
-
+    override fun onMessageArrived(eventId: Byte, payload: ByteArray, source: String) {
+        val companyCreated = CompanyCreatedPackage.parseFrom(payload)
+        val companyId = UUIDConverter.toUUID(companyCreated.companyId.toByteArray())
+        databaseManager.buildDatabase(companyId)
     }
 
     private fun notifyCompanyCreated(entity: CompanyEntity) {

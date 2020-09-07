@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service
 @Service
 class DeviceService : AbstractService<DeviceEntity, DeviceRepository>(), DataService<DeviceEntity>, MessageListener {
 
-    override fun onMessageArrived(eventId: Byte, payload: ByteArray?, source: String) {
+    override fun onMessageArrived(eventId: Byte, payload: ByteArray, source: String) {
 
     }
 }
