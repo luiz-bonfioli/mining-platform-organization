@@ -1,10 +1,8 @@
 package com.mining.platform.organization.equipment
 
-import com.google.protobuf.ByteString
 import com.mining.platform.core.communication.CommunicationService
 import com.mining.platform.core.communication.MessageListener
 import com.mining.platform.core.communication.protocol.Protocol
-import com.mining.platform.core.converter.UUIDConverter
 import com.mining.platform.core.service.AbstractService
 import com.mining.platform.core.service.DataService
 import com.mining.platform.equipment.EquipmentPackageOuterClass.EquipmentListPackage
@@ -67,7 +65,8 @@ class EquipmentService : AbstractService<EquipmentEntity, EquipmentRepository>()
     }
 
     private fun publishEquipmentList(builder: EquipmentListPackage.Builder) {
-        communicationService.publish(Protocol.Topic.BASIC_DATA_SYNC + Protocol.Topic.RESPONSE,
+        communicationService.publish(Protocol.Topic.MQTT_DEFAULT,
+                Protocol.Topic.DIAGNOSTIC + Protocol.Topic.RESPONSE,
                 Protocol.Service.EQUIPMENT,
                 Protocol.Event.EQUIPMENT_LIST,
                 builder.build().toByteArray()

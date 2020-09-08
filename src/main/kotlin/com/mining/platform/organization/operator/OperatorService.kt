@@ -46,7 +46,9 @@ class OperatorService : AbstractService<OperatorEntity, OperatorRepository>(), D
     }
 
     private fun publishOperatorList(builder: OperatorListPackage.Builder) {
-        communicationService.publish(Protocol.Topic.BASIC_DATA_SYNC + Protocol.Topic.RESPONSE,
+        communicationService.publish(
+                Protocol.Topic.MQTT_DEFAULT,
+                Protocol.Topic.BASIC_DATA_SYNC + Protocol.Topic.RESPONSE,
                 Protocol.Service.OPERATOR,
                 Protocol.Event.OPERATOR_LIST,
                 builder.build().toByteArray()

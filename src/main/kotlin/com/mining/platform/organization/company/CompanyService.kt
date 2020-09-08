@@ -46,7 +46,9 @@ class CompanyService : AbstractService<CompanyEntity, CompanyRepository>(), Data
             companyId = entity.id?.toString()
         }.build()
 
-        communicationService.publish(Protocol.Fanout.COMPANY_EVENT,
+        communicationService.publish(
+                Protocol.Fanout.COMPANY_EVENT,
+                Protocol.Fanout.COMPANY_EVENT,
                 Protocol.Service.COMPANY,
                 Protocol.Event.COMPANY_CREATED,
                 builder.toByteArray())
