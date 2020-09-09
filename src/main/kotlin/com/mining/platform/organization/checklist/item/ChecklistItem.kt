@@ -2,7 +2,6 @@ package com.mining.platform.organization.checklist.item
 
 import com.mining.platform.core.controller.ValueObject
 import com.mining.platform.core.converter.EntityConverter
-import com.mining.platform.core.converter.ValueObjectConverter
 import com.mining.platform.organization.checklist.Checklist
 import java.util.*
 
@@ -22,6 +21,5 @@ data class ChecklistItem(
         set(entity) {
             id = entity.id
             name = entity.name
-          //  checklist = ValueObjectConverter.convert(entity.checklist, Checklist::class)
         }
 }

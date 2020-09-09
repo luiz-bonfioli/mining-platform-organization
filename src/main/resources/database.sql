@@ -75,7 +75,7 @@
         last_modified_by uuid,
         last_modified_date int8 not null,
         entity_status varchar(255) not null,
-        serial_number varchar(255) not null,
+        serial_number varchar(255),
         primary key (id)
     )
 
@@ -89,6 +89,7 @@
         name varchar(255) not null,
         short_name varchar(255) not null,
         category_id uuid not null,
+        device_id uuid not null,
         model_id uuid not null,
         primary key (id)
     )
@@ -148,6 +149,7 @@
         last_modified_date int8 not null,
         entity_status varchar(255) not null,
         name varchar(255) not null,
+        register int4 not null,
         primary key (id)
     )
 
@@ -184,6 +186,19 @@
         last_modified_date int8 not null,
         entity_status varchar(255) not null,
         name varchar(255) not null,
+        primary key (id)
+    )
+
+    create table mining_platform.state (
+       id uuid not null,
+        created_by uuid,
+        created_date int8 not null,
+        last_modified_by uuid,
+        last_modified_date int8 not null,
+        entity_status varchar(255) not null,
+        icon varchar(255),
+        name varchar(255) not null,
+        parent_id uuid not null,
         primary key (id)
     )
 
@@ -268,6 +283,11 @@
        references mining_platform.category
 
     alter table if exists mining_platform.equipment 
+       add constraint device_fk 
+       foreign key (device_id) 
+       references mining_platform.device
+
+    alter table if exists mining_platform.equipment 
        add constraint model_fk 
        foreign key (model_id) 
        references mining_platform.model
@@ -281,3 +301,8 @@
        add constraint transaction_fk 
        foreign key (transaction_id) 
        references mining_platform.transaction
+
+    alter table if exists mining_platform.state 
+       add constraint parent_fk 
+       foreign key (parent_id) 
+       references mining_platform.state
