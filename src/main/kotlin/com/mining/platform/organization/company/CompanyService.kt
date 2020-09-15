@@ -37,8 +37,10 @@ class CompanyService : AbstractService<CompanyEntity, CompanyRepository>(), Data
 
     override fun onMessageArrived(eventId: Byte, payload: ByteArray, source: String) {
         val companyCreated = CompanyCreatedPackage.parseFrom(payload)
-        val companyId = UUIDConverter.toUUID(companyCreated.companyId)
-        databaseManager.buildDatabase(companyId)
+        if(companyCreated.companyId.isNotBlank()){
+            val companyId = UUIDConverter.toUUID(companyCreated.companyId)
+            databaseManager.buildDatabase(companyId)
+        }
     }
 
     private fun notifyCompanyCreated(entity: CompanyEntity) {

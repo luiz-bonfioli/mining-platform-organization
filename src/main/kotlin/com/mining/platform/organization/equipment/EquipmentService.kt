@@ -5,6 +5,8 @@ import com.mining.platform.core.communication.MessageListener
 import com.mining.platform.core.communication.protocol.Protocol
 import com.mining.platform.core.service.AbstractService
 import com.mining.platform.core.service.DataService
+import com.mining.platform.core.transaction.TransactionService
+import com.mining.platform.core.transaction.TransactionType
 import com.mining.platform.equipment.EquipmentPackageOuterClass.EquipmentListPackage
 import com.mining.platform.equipment.EquipmentPackageOuterClass.EquipmentPackage
 import com.mining.platform.organization.device.DeviceEntity
@@ -26,6 +28,9 @@ class EquipmentService : AbstractService<EquipmentEntity, EquipmentRepository>()
 
     @Autowired
     private lateinit var communicationService: CommunicationService
+
+    @Autowired
+    private lateinit var transactionService: TransactionService
 
     @Autowired
     private lateinit var deviceService: DeviceService
@@ -53,6 +58,14 @@ class EquipmentService : AbstractService<EquipmentEntity, EquipmentRepository>()
     }
 
     private fun onEquipmentListRequested() {
+
+        transactionService.run {
+            val transaction = create("topic", TransactionType.OUTBOUND)
+            addFragment(transaction, "".toByteArray())
+            addFragment(transaction, "".toByteArray())
+            execute(transaction)
+        }
+
         val equipments = findAll().map { equipment ->
             EquipmentPackage.newBuilder().apply {
                 id = equipment.id?.toString()
