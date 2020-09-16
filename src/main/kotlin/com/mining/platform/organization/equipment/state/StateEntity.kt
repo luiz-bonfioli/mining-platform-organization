@@ -2,7 +2,6 @@ package com.mining.platform.organization.equipment.state
 
 import com.mining.platform.core.audit.AuditListener
 import com.mining.platform.core.audit.AuditableEntity
-import com.mining.platform.organization.checklist.ChecklistEntity
 import org.hibernate.annotations.GenericGenerator
 import org.hibernate.annotations.Where
 import java.util.*
@@ -32,7 +31,7 @@ data class StateEntity(
         var icon: String,
 
         @ManyToOne
-        @JoinColumn(name = "parent_id", nullable = false, foreignKey = ForeignKey(name = "parent_fk"))
+        @JoinColumn(name = "parent_id", foreignKey = ForeignKey(name = "parent_fk"))
         var parent: StateEntity? = null
 
 ) : AuditableEntity()
