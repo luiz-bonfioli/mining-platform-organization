@@ -2,6 +2,7 @@ package com.mining.platform.organization.location
 
 import com.mining.platform.core.audit.AuditListener
 import com.mining.platform.core.audit.AuditableEntity
+import com.mining.platform.organization.equipment.state.StateEntity
 import org.hibernate.annotations.GenericGenerator
 import org.hibernate.annotations.Where
 import java.util.*
@@ -25,6 +26,10 @@ data class LocationEntity(
         override var id: UUID? = null,
 
         @Column(name = "name", nullable = false)
-        var name: String
+        var name: String,
+
+        @ManyToOne
+        @JoinColumn(name = "parent_id", foreignKey = ForeignKey(name = "parent_fk"))
+        var parent: LocationEntity? = null
 
 ) : AuditableEntity()
