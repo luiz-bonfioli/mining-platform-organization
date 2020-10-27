@@ -60,10 +60,11 @@ class EquipmentService : AbstractService<EquipmentEntity, EquipmentRepository>()
     private fun onEquipmentListRequested() {
 
         transactionService.run {
-            val transaction = create("topic", TransactionType.OUTBOUND)
-            addFragment(transaction, "".toByteArray())
-            addFragment(transaction, "".toByteArray())
-            execute(transaction)
+            create("topic", TransactionType.OUTBOUND).apply {
+                addFragment(this, "".toByteArray())
+                addFragment(this, "".toByteArray())
+                execute(this)
+            }
         }
 
         val equipments = findAll().map { equipment ->

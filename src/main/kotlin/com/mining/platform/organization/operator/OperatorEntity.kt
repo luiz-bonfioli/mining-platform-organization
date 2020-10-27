@@ -28,6 +28,6 @@ data class OperatorEntity(
         var name: String,
 
         @Column(name = "register", nullable = false)
-        var register: Int
+        var register: String
 
 ) : AuditableEntity()

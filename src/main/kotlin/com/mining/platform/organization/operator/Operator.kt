@@ -12,7 +12,7 @@ import java.util.*
 data class Operator(
         var id: UUID? = null,
         var name: String = "",
-        var register: Int = 0
+        var register: String = ""
 ) : ValueObject<OperatorEntity> {
 
     override var entity: OperatorEntity
