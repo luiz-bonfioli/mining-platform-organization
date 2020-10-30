@@ -1,7 +1,6 @@
 package com.mining.platform.organization.planning.order
 
 import com.mining.platform.core.datasource.AbstractRepository
-import com.mining.platform.organization.planning.plan.PlanEntity
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Repository
@@ -13,9 +12,7 @@ import java.util.*
  * @author luiz.bonfioli
  */
 @Repository
-interface ProductionOrderRepository : AbstractRepository<ProductionOrderEntity, UUID>{
+interface ProductionOrderRepository : AbstractRepository<ProductionOrderEntity, UUID> {
 
     fun findByDescriptionContains(description: String, pageable: Pageable): Page<ProductionOrderEntity>
-
 }
-
